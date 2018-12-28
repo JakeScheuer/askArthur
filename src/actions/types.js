@@ -9,3 +9,7 @@ export const CON_VAL ='con_value';
 export const DECSION_SUCCESS = 'decsion_entered';
 export const IMPACT_SUCCESS = 'impact_entered';
 export const OPTIONS_SUCCESS = 'options_entered';
+export const OPTION_UPDATE = 'option_update';
+export const OPTION_CREATE = 'option_create';
+export const OPTION_SAVE = 'option_save';
+export const OPTIONS_FETCH = 'options_fetch';
