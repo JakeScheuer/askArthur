@@ -1,0 +1,36 @@
+
+                            ASK ARTHUR OUTLINE
+
+Flow of app:
+    1. Start Page
+    2. Title Input
+    3. Impact/Complexity Input
+    4. Option Input
+    5. Output type selection
+    6. Results
+
+General:
+    3. Calculator object/script (all values go into this and creates object to display)
+
+Impact/Complexity:
+    1. Drop down input for Values
+
+Option Input:
+    1. Ability to dynamically add more than one Option
+    2. Drop down for pro and con values
+
+Output type selection:
+    1. Buttons for each: "Jesus Take The Wheel!", "Show me Everything",
+        "Based on Arthur's Calculations"
+
+Results:
+    1. Render each type based on output selection
+    2. Api for graphs or library of sorts??
+
+Extras:
+    1. Animations
+    2. Styling
+    3. Chance for Arthur not to listen mini game
+    4. Sounds: cat meow, hiss, and purr. Background music!
+
+
