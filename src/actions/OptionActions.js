@@ -8,7 +8,7 @@ export const optionUpdate = ({ prop, value }) => {
     };
 };
 
-export const optionsFetch = () => {
+export const optionsFetch = ( ) => {
     return {
         type: OPTIONS_FETCH
     };

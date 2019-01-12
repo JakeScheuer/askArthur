@@ -1,27 +1,15 @@
 import React, { Component } from 'react';
-import { Button, Card, CardSection, Input } from './common';
+import { View, Text, Picker } from 'react-native';
+import { Button, Card, CardSection } from './common';
 import { impactEntered, complexityEntered } from '../actions';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-//import Dropdown from 'react-dropdown'
-
-
-//CHANGE INPUTS TO DROPDOWN VALUES!!!!
 
 class ImpactInput extends Component {
 
     onButtonPress() {
        Actions.options();
     }
-
-    onImpact(text){
-        this.props.impactEntered(text);
-    }
-
-    onComplex(text){
-        this.props.complexityEntered(text);
-    }
-
     renderButton() {
         return(
             <Button onPress={this.onButtonPress.bind(this)}>
@@ -33,21 +21,29 @@ class ImpactInput extends Component {
     render() {
         return (
             <Card>
-                <CardSection>
-                    <Input
-                        placeholder="1 = doesnt effect anything 3 = determines everything"
-                        label="Impact:"
-                        value={this.props.impactValue}
-                        onChangeText={this.onImpact.bind(this)}
-                    />
+                <CardSection style={{ flexDirection: 'column' }}>
+                    <Text style={styles.pickerTextStyle}>Importance of Decision</Text>
+                    <Picker
+                        style={{ flex: 1 }}
+                        selectedValue={this.props.impactValue}
+                        onValueChange={value => this.props.impactEntered({prop: 'impactValue', value })}
+                    >
+                        <Picker.Item label="Trivial" value="1" />
+                        <Picker.Item label="Of Significant Value" value="2" />
+                        <Picker.Item label="Very Serious" value="3" />
+                    </Picker>
                 </CardSection>
-                <CardSection>
-                    <Input
-                        placeholder="1 = straight forward 3 =  this is a mess"
-                        label="Complexity:"
-                        value={this.props.complexityValue}
-                        onChangeText={this.onComplex.bind(this)}
-                    />
+                <CardSection style={{ flexDirection: 'column' }}>
+                    <Text style={styles.pickerTextStyle}>Complexity of Decision</Text>
+                    <Picker
+                        style={{ flex: 1 }}
+                        selectedValue={this.props.complexityValue}
+                        onValueChange={value => this.props.complexityEntered({ prop: 'complexityValue', value })}
+                    >
+                        <Picker.Item label="Doesn't Change Much or Anything" value="1" />
+                        <Picker.Item label="Will Have Some Effect on Other Events" value="2" />
+                        <Picker.Item label="This Will Have a Great Impact" value="3" />
+                    </Picker>
                 </CardSection>
                 <CardSection>
                     {this.renderButton()}
@@ -57,22 +53,12 @@ class ImpactInput extends Component {
     }
 }
 
-/* <Dropdown 
-                        options={iOptions} 
-                        onChange={this.onImpact.bind(this)}
-                        value={this.props.impactValue}
-                        placeholder="Select an option"
-                        />
-const defaultOption = options[0];
-const iOptions = [{ value: '1', label: 'Not a big deal'},
-                { value: '2', label: 'This matters'},
-                { value: '3', label: 'The importance of this scares me'}];
-
-const cOptions = [{ value: '1', label: 'Pretty simple decision'},
-                { value: '2', label: 'This requires some thought'},
-                { value: '3', label: 'This is an absolute mess'}];
-
-                 */
+const styles = {
+    pickerTextStyle: {
+      fontSize: 18,
+      paddingLeft: 20
+    }
+};
 
 const mapStateToProps = ({ decsionInfo }) => {
     const { impactValue, complexityValue } = decsionInfo;

@@ -15,18 +15,38 @@ export const decsionEntered = (text) => {
         payload: text
     };
 };
-export const complexityEntered = (text) => {
+export const complexityEntered = ({ prop, value }) => {
     return {
         type: COMPLEXITY,
-        payload: text
+        payload: { prop, value }
     };
 };
-export const impactEntered = (text) => {
+export const impactEntered = ({ prop, value }) => {
     return {
         type: IMPACT,
-        payload: text
+        payload: { prop, value }
     };
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const optionTitleEntered = (text) => {
     return {
         type: OPTION_TITLE,

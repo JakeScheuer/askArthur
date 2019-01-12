@@ -15,9 +15,9 @@ export default (state = INITAL_STATE, action) => {
         case DECSION:
                 return { ...state, decsionName: action.payload };
         case COMPLEXITY:
-                return { ...state, complexityValue: action.payload };
+                return { ...state, ...state, [action.payload.prop]: action.payload.value };
         case IMPACT:
-                return { ...state, impactValue: action.payload };
+                return { ...state, ...state, [action.payload.prop]: action.payload.value };
         default:
                 return state;
     }

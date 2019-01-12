@@ -12,35 +12,35 @@ class OptionInput extends Component {
         Actions.addOption();
     }  
 
-    componentWillMount() {
-        this.props.optionsFetch();
-        this.createDataSource(this.props);
-    }
+    // componentWillMount() {
+    //     this.props.optionsFetch();
+    //     this.createDataSource(this.props);
+    // }
 
-    componentWillRecieveProps(nextProps) {
-        this.createDataSource(nextProps);
-    }
+    // componentWillReceiveProps(nextProps) {
+    //     this.createDataSource(nextProps);
+    // }
 
-    createDataSource({ options }) {
-        const ds = new ListView.DataSource({
-          rowHasChanged: (r1, r2) => r1 !== r2
-        });
+    // createDataSource({ options }) {
+    //     const ds = new ListView.DataSource({
+    //       rowHasChanged: (r1, r2) => r1 !== r2
+    //     });
     
-        this.dataSource = ds.cloneWithRows(options);
-      }
+    //     this.dataSource = ds.cloneWithRows(options);
+    //   }
 
-    renderRow(option) {
-        return <ListItem option={option} />;
-    }
+    // renderRow(option) {
+    //     return <ListItem option={option} />;
+    // }
 
     render() {
         return (
           <View>
-            <ListView 
+            {/* <ListView 
               enableEmptySections
               dataSource={this.dataSource}
               renderRow={this.renderRow}
-            />
+            /> */}
             <CardSection>
               <Button onPress={this.onButtonPress.bind(this)}>
                  Add Option
@@ -51,12 +51,10 @@ class OptionInput extends Component {
       }
     }
 
-    const mapStateToProps = state => {
-        const options = _.map(state.options, (description) => {
-          return { ...description };
-        });
+    // const mapStateToProps = state
+    // => {
+    //     const options = _.map(state.employees, (val, uid));
+    //       return { ...val, uid }
+    //     };
       
-        return { options };
-      };
-      
-      export default connect(mapStateToProps, { optionsFetch })(OptionInput);
+   export default OptionInput;
