@@ -68,8 +68,8 @@ const styles = {
     }
   };
 
-const mapStateToProps = (state) => {
-    const { description, proName, proVal, conName, conVal } = state.optionForm;
+const mapStateToProps = ({ optionForm }) => {
+    const { description, proName, proVal, conName, conVal } = optionForm;
 
     return { description, proName, proVal, conName, conVal };
 };

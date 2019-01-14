@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
-import { ListView, View } from 'react-native';
+import { ListView, View, Text } from 'react-native';
 import { optionsFetch } from '../actions/OptionActions';
 import ListItem from './ListItem';
 import { Button, CardSection } from './common';
@@ -30,17 +30,20 @@ class OptionInput extends Component {
     //   }
 
     // renderRow(option) {
-    //     return <ListItem option={option} />;
+    //     return <ListItem optionName={option} />;
     // }
+    /* <ListView 
+              enableEmptySections
+              dataSource={this.dataSource}
+              renderRow={this.renderRow}
+            /> */
 
     render() {
         return (
           <View>
-            {/* <ListView 
-              enableEmptySections
-              dataSource={this.dataSource}
-              renderRow={this.renderRow}
-            /> */}
+            <CardSection>
+              <Text>{ this.props.optionsFetch('yup') }</Text>
+            </CardSection>
             <CardSection>
               <Button onPress={this.onButtonPress.bind(this)}>
                  Add Option

@@ -8,15 +8,16 @@ export const optionUpdate = ({ prop, value }) => {
     };
 };
 
-export const optionsFetch = ( ) => {
+export const optionsFetch = (yup) => {
     return {
-        type: OPTIONS_FETCH
+        type: OPTIONS_FETCH,
+        payload: yup
     };
 };
 
-export const optionCreate = ({ description, proName, proVal, conName, conVal }) => {
+export const optionCreate = (createdOption) => {
     return {
         type: OPTION_SAVE,
-        payload: { description, proName, proVal, conName, conVal }
+        payload: createdOption
     };
 };

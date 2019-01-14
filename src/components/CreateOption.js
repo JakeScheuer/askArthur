@@ -8,7 +8,8 @@ import { Actions } from 'react-native-router-flux';
 class OptionCreate extends Component {
   onButtonPress() {
     const { description, proName, proVal, conName, conVal } = this.props;
-    this.props.optionCreate({ description, proName, proVal, conName, conVal });
+    const createdOption = [ description, proName, proVal, conName, conVal ];
+    this.props.optionCreate(createdOption);
     Actions.options();
   }
 
@@ -26,12 +27,10 @@ class OptionCreate extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  const { description, proName, proVal, conName, conVal } = state.optionForm;
+const mapStateToProps = ({ options }) => {
+  const { allOptions } = options;
 
-  return { description, proName, proVal, conName, conVal };
+  return { allOptions };
 };
 
-export default connect(mapStateToProps, {
-  optionUpdate, optionCreate
-})(OptionCreate);
+export default connect(mapStateToProps, { optionCreate, optionUpdate })(OptionCreate);
