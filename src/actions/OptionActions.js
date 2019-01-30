@@ -1,23 +1,21 @@
-import { Actions } from 'react-native-router-flux';
-import { OPTION_UPDATE, OPTIONS_FETCH, OPTION_SAVE } from './types';
+import { OPTIONS_FETCH, ADD_OPTION, OPTION_UPDATE } from './types';
 
-export const optionUpdate = ({ prop, value }) => {
+export const optionFetch = () => {
     return {
-        type: OPTION_UPDATE,
-        payload: { prop, value }
+      type: OPTIONS_FETCH
     };
-};
+  };
 
-export const optionsFetch = (yup) => {
+  export const addOption = (option) => {
     return {
-        type: OPTIONS_FETCH,
-        payload: yup
+      type: ADD_OPTION,
+      payload: option
     };
-};
+  };
 
-export const optionCreate = (createdOption) => {
+  export const optionUpdate = ({ prop, value }) => {
     return {
-        type: OPTION_SAVE,
-        payload: createdOption
+      type: OPTION_UPDATE,
+      payload: { prop, value }
     };
-};
+  };

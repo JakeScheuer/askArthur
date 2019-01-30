@@ -1,14 +1,22 @@
 import React, { Component } from 'react';
-import { View, Text, Picker } from 'react-native';
+import { Text, Picker } from 'react-native';
 import { Button, Card, CardSection } from './common';
-import { impactEntered, complexityEntered } from '../actions';
-import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
+import { connect } from 'react-redux';
+import { impactChanged, complexityChanged } from '../actions';
 
 class ImpactInput extends Component {
 
     onButtonPress() {
+        console.log(this.props.impactValue);
+        console.log(this.props.complexityValue);
        Actions.options();
+    }
+    onImpactChange(text) {
+        this.props.impactChanged(text);
+    }
+    onComplexityChange(text) {
+        this.props.complexityChanged(text);
     }
     renderButton() {
         return(
@@ -26,7 +34,7 @@ class ImpactInput extends Component {
                     <Picker
                         style={{ flex: 1 }}
                         selectedValue={this.props.impactValue}
-                        onValueChange={value => this.props.impactEntered({prop: 'impactValue', value })}
+                        onValueChange={value => this.props.impactChanged(value)}
                     >
                         <Picker.Item label="Trivial" value="1" />
                         <Picker.Item label="Of Significant Value" value="2" />
@@ -38,7 +46,7 @@ class ImpactInput extends Component {
                     <Picker
                         style={{ flex: 1 }}
                         selectedValue={this.props.complexityValue}
-                        onValueChange={value => this.props.complexityEntered({ prop: 'complexityValue', value })}
+                        onValueChange={value => this.props.complexityChanged(value)}
                     >
                         <Picker.Item label="Doesn't Change Much or Anything" value="1" />
                         <Picker.Item label="Will Have Some Effect on Other Events" value="2" />
@@ -60,9 +68,11 @@ const styles = {
     }
 };
 
-const mapStateToProps = ({ decsionInfo }) => {
-    const { impactValue, complexityValue } = decsionInfo;
-    return { impactValue, complexityValue };
-};
-
-export default connect(mapStateToProps, { impactEntered, complexityEntered })(ImpactInput);
+const mapStateToProps = (state) => {
+  
+    return { impactValue: state.initial.impactValue,
+            complexityValue: state.initial.complexityValue
+        };
+  };
+  
+  export default connect(mapStateToProps, { impactChanged, complexityChanged })(ImpactInput);

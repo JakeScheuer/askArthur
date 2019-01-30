@@ -1,21 +1,18 @@
-import { 
-    OPTION_UPDATE
-    
-} from '../actions/types';
+import { OPTION_UPDATE } from '../actions/types';
 
 const INITIAL_STATE = {
     description: '',
     proName: '',
-    proVal: '', 
-    conName: '', 
+    proVal: '',
+    conName: '',
     conVal: ''
 };
 
 export default (state = INITIAL_STATE, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case OPTION_UPDATE:
             return { ...state, [action.payload.prop]: action.payload.value };
         default:
             return state;
     }
-};
+  };

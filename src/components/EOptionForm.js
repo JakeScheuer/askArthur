@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
-import { View, Text, Picker } from 'react-native';
-import { CardSection, Input } from './common';
-import { optionUpdate } from '../actions';
+import { Text, Picker } from 'react-native';
+import { CardSection, Input, Card, Button } from './common';
+import { optionUpdate, addOption } from '../actions';
 import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux';
 
 class OptionForm extends Component {
+    onButtonPress() {
+        this.props.addOption(this.props);
+        Actions.options();
+    }
+    
     render() {
         return (
-            <View>
+            <Card>
                 <CardSection>
                     <Input
                         placeholder="Example: Look out the window"
@@ -56,7 +62,12 @@ class OptionForm extends Component {
                         <Picker.Item label="important" value="3" />
                     </Picker>
                 </CardSection>
-            </View>
+                <CardSection>
+                    <Button onPress={this.onButtonPress.bind(this)}>
+                        Add to Options
+                    </Button>
+                </CardSection>
+            </Card>
         );
     }
 }
@@ -68,10 +79,13 @@ const styles = {
     }
   };
 
-const mapStateToProps = ({ optionForm }) => {
-    const { description, proName, proVal, conName, conVal } = optionForm;
-
-    return { description, proName, proVal, conName, conVal };
+  const mapStateToProps = (state) => {
+     return {
+     description: state.form.description, 
+     proName: state.form.proName, 
+     proVal: state.form.proVal,
+     conName: state.form.conName, 
+     conVal: state.form.conVal 
+     };
 };
-
-export default connect(mapStateToProps, { optionUpdate })(OptionForm);
+  export default connect(mapStateToProps, { optionUpdate, addOption })(OptionForm);

@@ -1,10 +1,11 @@
 import { combineReducers } from 'redux';
-import decsionReducer from './decsionReducer';
-import OptionFormReducer from './OptionFormReducer';
-import OptionReducer from './OptionReducer';
+import initialReducer from './initialReducer';
+import listReducer from './listReducer';
+import formReducer from './formReducer';
+
 
 export default combineReducers({
-    decsionInfo: decsionReducer,
-    optionForm: OptionFormReducer,
-    options: OptionReducer
+    initial: initialReducer,
+    list: listReducer,
+    form: formReducer
 });

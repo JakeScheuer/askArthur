@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import Router from './Router';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducers from './reducers';
-import Router from './Router';
 
 class App extends Component {
   

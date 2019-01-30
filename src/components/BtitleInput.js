@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
-import { Button, Card, CardSection, Input, } from './common';
-import { decsionEntered } from '../actions';
-import { connect } from 'react-redux';
+import { Button, Card, CardSection, Input } from './common';
 import { Actions } from 'react-native-router-flux';
+import { connect } from 'react-redux';
+import { titleChanged } from '../actions';
 
 class TitleInput extends Component {
 
     onButtonPress() {
+        console.log(this.props.description);
         Actions.impact();
     }
 
-    onEntry(text){
-        this.props.decsionEntered(text);
+    onTitleChange(text){
+        this.props.titleChanged(text);
     }
 
     renderButton() {
@@ -29,8 +30,8 @@ class TitleInput extends Component {
                     <Input
                         placeholder="Example: What should I do today?"
                         label="Decsion:"
-                        value={this.props.decsionName}
-                        onChangeText={this.onEntry.bind(this)}
+                        value={this.props.description}
+                        onChangeText={this.onTitleChange.bind(this)}
                     />
                 </CardSection>
                 <CardSection>
@@ -41,9 +42,8 @@ class TitleInput extends Component {
     }
 };
 
-const mapStateToProps = ({ decsionInfo }) => {
-    const { decsionName } = decsionInfo;
-    return { decsionName };
+const mapStateToProps = (state) => {
+    return { description: state.initial.description };
 };
 
-export default connect(mapStateToProps, {decsionEntered})(TitleInput);
+export default connect(mapStateToProps, { titleChanged })(TitleInput);
