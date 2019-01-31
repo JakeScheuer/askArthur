@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Text, Picker, View } from 'react-native';
-import { Button, Card, CardSection } from './common';
+import { Picker } from 'react-native';
+import { Button, Card, CardSection, Prompt } from './common';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { impactChanged, complexityChanged } from '../actions';
@@ -28,9 +28,7 @@ class ImpactInput extends Component {
         return (
             <Card>
                 <CardSection>
-                    <View style={styles.textContainer}>
-                        <Text style={styles.pickerTextStyle}>How Difficult Is This Decision?</Text>
-                    </View>
+                    <Prompt>How Difficult Is This Decision?</Prompt>
                 </CardSection>
                 <CardSection style={{ flexDirection: 'column' }}>
                     <Picker
@@ -44,9 +42,7 @@ class ImpactInput extends Component {
                     </Picker>
                 </CardSection>
                 <CardSection>
-                    <View style={styles.textContainer}>
-                        <Text style={styles.pickerTextStyle}>How Stressful Is This Decision?</Text>
-                    </View>
+                    <Prompt>How Stressful Is This Decision?</Prompt>
                 </CardSection>
                 <CardSection style={{ flexDirection: 'column' }}>
                     <Picker
@@ -68,18 +64,6 @@ class ImpactInput extends Component {
         )
     }
 }
-
-const styles = {
-    pickerTextStyle: {
-      fontSize: 18,
-      color: 'red'
-    },
-
-    textContainer: {
-        flex: 1,
-        alignItems: 'center'
-    }
-};
 
 const mapStateToProps = (state) => {
   

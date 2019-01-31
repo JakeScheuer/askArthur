@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Card, CardSection, Input } from './common';
-import { Text, View } from 'react-native';
+import { Button, Card, CardSection, Input, Prompt } from './common';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { titleChanged } from '../actions';
@@ -27,9 +26,7 @@ class TitleInput extends Component {
         return (
             <Card>
                 <CardSection>
-                    <View style={styles.textContainer}>
-                        <Text style={styles.pickerTextStyle}>What Is Troubling You?</Text>
-                    </View>
+                    <Prompt>What Is Troubling You?</Prompt>
                 </CardSection>
                 <CardSection>
                     <Input
@@ -46,17 +43,6 @@ class TitleInput extends Component {
     }
 };
 
-const styles = {
-    pickerTextStyle: {
-      fontSize: 18,
-      color: 'red'
-    },
-
-    textContainer: {
-        flex: 1,
-        alignItems: 'center'
-    }
-};
 
 const mapStateToProps = (state) => {
     return { description: state.initial.description };

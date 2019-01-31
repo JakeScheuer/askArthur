@@ -20,7 +20,7 @@ class StartPage extends Component {
                     onPress={this.onPet.bind(this)}>
                         <Image 
                         style={styles.cat} 
-                        source={require('./pathetic2.jpg')}
+                        source={require('../resources/pathetic2.jpg')}
                         />
                     </TouchableOpacity>
                 </CardSection>
