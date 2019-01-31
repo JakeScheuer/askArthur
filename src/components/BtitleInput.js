@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Card, CardSection, Input } from './common';
+import { Text, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { titleChanged } from '../actions';
@@ -7,7 +8,6 @@ import { titleChanged } from '../actions';
 class TitleInput extends Component {
 
     onButtonPress() {
-        console.log(this.props.description);
         Actions.impact();
     }
 
@@ -27,9 +27,13 @@ class TitleInput extends Component {
         return (
             <Card>
                 <CardSection>
+                    <View style={styles.textContainer}>
+                        <Text style={styles.pickerTextStyle}>What Is Troubling You?</Text>
+                    </View>
+                </CardSection>
+                <CardSection>
                     <Input
-                        placeholder="Example: What should I do today?"
-                        label="Decsion:"
+                        placeholder="Arthur's Example: What should I do today?"
                         value={this.props.description}
                         onChangeText={this.onTitleChange.bind(this)}
                     />
@@ -39,6 +43,18 @@ class TitleInput extends Component {
                 </CardSection>
             </Card>
         )
+    }
+};
+
+const styles = {
+    pickerTextStyle: {
+      fontSize: 18,
+      color: 'red'
+    },
+
+    textContainer: {
+        flex: 1,
+        alignItems: 'center'
     }
 };
 

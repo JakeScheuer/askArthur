@@ -3,9 +3,9 @@ import { OPTION_UPDATE } from '../actions/types';
 const INITIAL_STATE = {
     description: '',
     proName: '',
-    proVal: '',
+    proVal: '1',
     conName: '',
-    conVal: ''
+    conVal: '1'
 };
 
 export default (state = INITIAL_STATE, action) => {

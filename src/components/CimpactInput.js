@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, Picker } from 'react-native';
+import { Text, Picker, View } from 'react-native';
 import { Button, Card, CardSection } from './common';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
@@ -8,8 +8,6 @@ import { impactChanged, complexityChanged } from '../actions';
 class ImpactInput extends Component {
 
     onButtonPress() {
-        console.log(this.props.impactValue);
-        console.log(this.props.complexityValue);
        Actions.options();
     }
     onImpactChange(text) {
@@ -29,28 +27,38 @@ class ImpactInput extends Component {
     render() {
         return (
             <Card>
-                <CardSection style={{ flexDirection: 'column' }}>
-                    <Text style={styles.pickerTextStyle}>Importance of Decision</Text>
-                    <Picker
-                        style={{ flex: 1 }}
-                        selectedValue={this.props.impactValue}
-                        onValueChange={value => this.props.impactChanged(value)}
-                    >
-                        <Picker.Item label="Trivial" value="1" />
-                        <Picker.Item label="Of Significant Value" value="2" />
-                        <Picker.Item label="Very Serious" value="3" />
-                    </Picker>
+                <CardSection>
+                    <View style={styles.textContainer}>
+                        <Text style={styles.pickerTextStyle}>How Difficult Is This Decision?</Text>
+                    </View>
                 </CardSection>
                 <CardSection style={{ flexDirection: 'column' }}>
-                    <Text style={styles.pickerTextStyle}>Complexity of Decision</Text>
                     <Picker
                         style={{ flex: 1 }}
                         selectedValue={this.props.complexityValue}
                         onValueChange={value => this.props.complexityChanged(value)}
                     >
-                        <Picker.Item label="Doesn't Change Much or Anything" value="1" />
-                        <Picker.Item label="Will Have Some Effect on Other Events" value="2" />
-                        <Picker.Item label="This Will Have a Great Impact" value="3" />
+                        <Picker.Item label="It's Really Not" value="1" />
+                        <Picker.Item label="I Need Some Help" value="2" />
+                        <Picker.Item label="It's Overwhelming" value="3" />
+                    </Picker>
+                </CardSection>
+                <CardSection>
+                    <View style={styles.textContainer}>
+                        <Text style={styles.pickerTextStyle}>How Stressful Is This Decision?</Text>
+                    </View>
+                </CardSection>
+                <CardSection style={{ flexDirection: 'column' }}>
+                    <Picker
+                        style={{ flex: 1 }}
+                        selectedValue={this.props.impactValue}
+                        onValueChange={value => this.props.impactChanged(value)}
+                    >
+                        <Picker.Item label="Not At All" value="1" />
+                        <Picker.Item label="A Little" value="2" />
+                        <Picker.Item label="Moderately" value="3" />
+                        <Picker.Item label="I Am Freaking Out A Bit" value="4" />
+                        <Picker.Item label="Impending Doom" value="5" />
                     </Picker>
                 </CardSection>
                 <CardSection>
@@ -64,7 +72,12 @@ class ImpactInput extends Component {
 const styles = {
     pickerTextStyle: {
       fontSize: 18,
-      paddingLeft: 20
+      color: 'red'
+    },
+
+    textContainer: {
+        flex: 1,
+        alignItems: 'center'
     }
 };
 

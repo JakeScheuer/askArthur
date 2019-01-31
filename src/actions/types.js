@@ -5,3 +5,4 @@ export const COMPLEXITY_CHANGED = 'complexity_changed';
 export const OPTIONS_FETCH = 'options_fetch';
 export const ADD_OPTION = 'add_option';
 export const OPTION_UPDATE = 'option_update';
+export const NEW_DECISION = 'new_decision';

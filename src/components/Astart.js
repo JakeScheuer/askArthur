@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, TouchableOpacity, Image } from 'react-native';
+import { Text, TouchableOpacity, Image, View } from 'react-native';
 import { Card, CardSection } from './common';
 import { Actions } from 'react-native-router-flux';
 
@@ -12,17 +12,22 @@ class StartPage extends Component {
         return (
             <Card>
                 <CardSection>
-                    <Text style={styles.welcome}>Welcome indecisive human.</Text>
+                    <Text style={styles.welcome}>Welcome To Ask Arthur</Text>
                 </CardSection>
                 <CardSection>
-                    <Text style={styles.instructions}>To get started, give me a scratch</Text>
-                </CardSection>
-                <CardSection>
-                    <TouchableOpacity onPress={this.onPet.bind(this)}>
-                        <Image  
-                        source={require('./pathetic2.jpg')} 
+                    <TouchableOpacity 
+                    style={styles.container}
+                    onPress={this.onPet.bind(this)}>
+                        <Image 
+                        style={styles.cat} 
+                        source={require('./pathetic2.jpg')}
                         />
                     </TouchableOpacity>
+                </CardSection>
+                <CardSection>
+                    <View style={styles.container}>
+                        <Text style={styles.instructions}>Give Arthur A Scratch To Get Started</Text>
+                    </View>
                 </CardSection>
             </Card>
         )
@@ -34,14 +39,21 @@ welcome: {
     color: 'black',
     fontSize: 34,
     textAlign: 'center',
-    margin: 20,
+    fontWeight: 'bold',
+    margin: 10,
     },
+container: {
+    flex: 1,
+    alignItems: 'center'
+},
+cat: {
+    borderRadius: 50,
+},
 instructions: {
+    color: 'red',
     fontSize: 18,
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 25
-    }
-}
+    margin: 5
+    },
+};
 
 export default StartPage;

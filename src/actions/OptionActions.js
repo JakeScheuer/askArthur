@@ -1,4 +1,4 @@
-import { OPTIONS_FETCH, ADD_OPTION, OPTION_UPDATE } from './types';
+import { OPTIONS_FETCH, ADD_OPTION, OPTION_UPDATE, NEW_DECISION } from './types';
 
 export const optionFetch = () => {
     return {
@@ -17,5 +17,11 @@ export const optionFetch = () => {
     return {
       type: OPTION_UPDATE,
       payload: { prop, value }
+    };
+  };
+  
+  export const newDecision = () => {
+    return {
+      type: NEW_DECISION
     };
   };

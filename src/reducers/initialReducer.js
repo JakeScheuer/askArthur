@@ -2,8 +2,8 @@ import { TITLE_UPDATE, IMPACT_CHANGED, COMPLEXITY_CHANGED } from '../actions/typ
 
 const INITIAL_STATE = {
     description: '',
-    impactValue: '',
-    complexityValue: ''
+    impactValue: '1',
+    complexityValue: '1'
 };
 
 export default (state = INITIAL_STATE, action) => {
