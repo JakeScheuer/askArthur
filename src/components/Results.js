@@ -41,14 +41,14 @@ class Results extends Component {
   calculateDecision() {
     const optionTitlesAndValues = this.props.options.map(
       option =>[option.description, parseInt(option.proVal, 10), parseInt(option.conVal, 10)]);
-     console.log(optionTitlesAndValues);
+     //console.log(optionTitlesAndValues);
     const proportioned = optionTitlesAndValues.map(
       option => this.proportion(option[0], (option[1]-option[2])));
-     console.log(proportioned);
+     //console.log(proportioned);
     const optionTitles = proportioned.flat(1);
-     console.log(optionTitles);
+     //console.log(optionTitles);
     const choice = Math.round(1 + Math.random() * (optionTitles.length-1))-1;
-     console.log(choice);
+     //console.log(choice);
     return (<Text style={styles.resultText}>{optionTitles[choice]}</Text>);
   }
 

@@ -3,7 +3,7 @@ import { ScrollView, Text } from 'react-native';
 import { Button, CardSection, Card, Prompt, ListItem } from './common';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
-import { optionFetch } from '../actions';
+import { optionFetch, deleteOption } from '../actions';
 
 class OptionScreen extends Component {  
 
@@ -20,14 +20,17 @@ class OptionScreen extends Component {
     Actions.ask();
   }
 
-  onDelete() {
-    
+  onDelete(val) {
+    const value = this.props.allOptions.indexOf(val);
+    this.props.deleteOption(value);
+    Actions.options();
   }
+
 
   renderOptions() {
     return this.props.allOptions.map(listItem =>
       <CardSection key={listItem.description}>
-        <ListItem onPress={this.onDelete.bind(this)}>
+        <ListItem onPress={this.onDelete.bind(this, listItem.description)}>
           {listItem.description}
         </ListItem>
       </CardSection> 
@@ -67,4 +70,4 @@ class OptionScreen extends Component {
              complexity: state.initial.complexityValue };
 };
 
-  export default connect(mapStateToProps, { optionFetch })(OptionScreen);
+  export default connect(mapStateToProps, { optionFetch, deleteOption })(OptionScreen);
